@@ -12,5 +12,9 @@
 
 @property NSString *largerIntegerA;
 @property NSString *largerIntegerB;
+@property NSString *largeInteger;
+
+-(MyLargeInteger*) add:(MyLargeInteger*)largerInteger;
+-(BOOL)isEqualTo:(MyLargeInteger*)largerInteger;
 
 @end

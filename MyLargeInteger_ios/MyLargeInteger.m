@@ -14,54 +14,39 @@
 
 @implementation MyLargeInteger
 
-- (void)viewDidLoad
+
+-(BOOL)isEqualTo:(MyLargeInteger*)largerInteger
 {
-    [super viewDidLoad];
-
-    self.largerIntegerA = @"1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
-//    self.largerIntegerB = @"1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111";
-    self.largerIntegerB = @"90817234908127490182749081237409871230498712908";
-    NSString *largerIntegerSum = [self addLargeInteger:self.largerIntegerA and:self.largerIntegerB];
-    NSLog(@"%@", largerIntegerSum);
-    NSLog(@"%hhd", [self isEqual:self.largerIntegerA to:self.largerIntegerB]);
-
+    return [self.largeInteger isEqualToString:largerInteger.largeInteger];
 }
 
--(BOOL)isEqual:(NSString*)largerIntegerA to:(NSString*)largerIntegerB
+-(MyLargeInteger*) add:(MyLargeInteger*)largerInteger
 {
-    return [largerIntegerA isEqualToString:largerIntegerB];
-}
-
--(NSString*)addLargeInteger:(NSString*)largerIntegerA and:(NSString*)largerIntegerB
-{
-    NSString *largerIntegerSum = @"";
+    NSString *largerIntegerSumString = @"";
     int carry = 0;
     int digitA, digitB;
     for (int idx=0; idx < 100; idx++)
     {
-        if (largerIntegerA.length - 1 < idx)
+        if (self.largeInteger.length - 1 < idx)
             digitA = 0;
         else
-            digitA = [[largerIntegerA substringWithRange:NSMakeRange((largerIntegerA.length - 1)-idx, 1)] intValue];
+            digitA = [[self.largeInteger substringWithRange:NSMakeRange((self.largeInteger.length - 1)-idx, 1)] intValue];
         
-        if (largerIntegerB.length - 1 < idx)
+        if (largerInteger.largeInteger.length - 1 < idx)
             digitB = 0;
         else
-            digitB = [[largerIntegerB substringWithRange:NSMakeRange((largerIntegerB.length - 1)-idx, 1)] intValue];
+            digitB = [[largerInteger.largeInteger substringWithRange:NSMakeRange((largerInteger.largeInteger.length - 1)-idx, 1)] intValue];
         
         int digitSum = (digitA + digitB) % 10 + carry;
-        largerIntegerSum = [NSString stringWithFormat:@"%d%@", digitSum, largerIntegerSum];
+        largerIntegerSumString = [NSString stringWithFormat:@"%d%@", digitSum, largerIntegerSumString];
         carry = (digitA + digitB) /10;
     }
 
-    
+    MyLargeInteger *largerIntegerSum = [MyLargeInteger new];
+    largerIntegerSum.largeInteger = largerIntegerSumString;
     return largerIntegerSum;
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
