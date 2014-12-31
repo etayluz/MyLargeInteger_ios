@@ -68,4 +68,14 @@
     largerIntegerB.largeInteger = @"1000000";
     XCTAssertTrue([largerIntegerA isEqualTo:largerIntegerB], @"Not Equal Error");
 }
+
+- (void)testIsNotEqual1 {
+    // This is an example of a functional test case.
+    MyLargeInteger *largerIntegerA = [MyLargeInteger new];
+    MyLargeInteger *largerIntegerB = [MyLargeInteger new];
+    
+    largerIntegerA.largeInteger = @"1000000";
+    largerIntegerB.largeInteger = @"2000000";
+    XCTAssertFalse([largerIntegerA isEqualTo:largerIntegerB], @"Is Equal Error");
+}
 @end

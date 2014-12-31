@@ -10,8 +10,6 @@
 
 @interface MyLargeInteger : UIViewController
 
-@property NSString *largerIntegerA;
-@property NSString *largerIntegerB;
 @property NSString *largeInteger;
 
 -(MyLargeInteger*) add:(MyLargeInteger*)largerInteger;

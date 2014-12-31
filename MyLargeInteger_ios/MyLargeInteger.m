@@ -15,11 +15,6 @@
 @implementation MyLargeInteger
 
 
--(BOOL)isEqualTo:(MyLargeInteger*)largerInteger
-{
-    return [self.largeInteger isEqualToString:largerInteger.largeInteger];
-}
-
 -(MyLargeInteger*) add:(MyLargeInteger*)largerInteger
 {
     NSString *largerIntegerSumString = @"";
@@ -45,7 +40,11 @@
     MyLargeInteger *largerIntegerSum = [MyLargeInteger new];
     largerIntegerSum.largeInteger = largerIntegerSumString;
     return largerIntegerSum;
-    
+}
+
+-(BOOL)isEqualTo:(MyLargeInteger*)largerInteger
+{
+    return [self.largeInteger isEqualToString:largerInteger.largeInteger];
 }
 
 
